@@ -16,9 +16,7 @@ option when using the GemFire CF cli plugin. See ... for more information on the
 
 The following examples expand on the examples provided in [spring-data-gemfire-exmaples](https://github.com/spring-projects/spring-gemfire-examples).
 
-Specifically we will use the example provided in basic/java-config as a base. And follow below steps:
-
-1. Add a minimal XML
+Specifically we will use the example provided in basic/java-config as a base.
 
 Currently GemFire can be bootstrapped using Spring XML. In order to use Spring's Java configuration
 we need a minimal Spring XML config as shown below.
@@ -38,20 +36,14 @@ we need a minimal Spring XML config as shown below.
 For the basic/java-config project, this XML should be added under a `src/main/resources` directory
 as `cache-context.xml`. This will include the XML into the jar during the Gradle `build` step.
 
-1. The directory `cluster` provides a template to use for creating a cluster config zip file. In order
+In order to build a new cluster config, follow these steps:
+
+1. This example provides a directory `cluster` as a template to use for creating a cluster config zip file. In order
 to scan packages for `@Configuration` annotation this template includes a `spring-context` jar in
 the `cluster/lib` directory.
 
-1. Add `java-config.1.6.0.RELEASE.jar` present under basic/java-config/build/libs to the cluster config template under `cluster\lib`
+1. Copy `java-config.1.6.0.RELEASE.jar` present under `basic/java-config/build/libs` to `cluster/lib`.
 
 1. Create a zip file with the command `zip -r config.zip cluster/`
 
-1. Deploy using the following `cf` command: `cf restart-gemfire <service name> --config=config.zip --spring-xml=cache-context.xml`
- 
- 
- 
- Using this example as a base
-perform the following steps in order to deploy it to a GemFire CloudFoundry service instance:
-
-- provide spring context xml in resources
-- bar
+1. Restart GemFire service instance using the following `cf` command: `cf restart-gemfire <service name> --config=config.zip --spring-xml=cache-context.xml`
