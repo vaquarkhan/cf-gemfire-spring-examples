@@ -18,3 +18,16 @@ dependencies {
     compile "org.springframework:spring-test:$springVersion"
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
+
+task('copyConfig', type: Copy, dependsOn: build) {
+  inputs.file 'build/libs/cf-gemfire-spring-examples.jar'
+  from(file('build/libs'))
+  into('cluster/lib')
+}
+
+task('buildClusterConfig', type: Zip, dependsOn: copyConfig) {
+  inputs.file 'build/libs/cf-gemfire-spring-examples.jar'
+  from 'cluster'
+  archiveName 'config.zip'
+}
+

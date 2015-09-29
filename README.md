@@ -20,10 +20,8 @@ In order to build a new cluster config, follow these steps:
 to scan packages for `@Configuration` annotation this template includes a `spring-context` jar in
 the `cluster/lib` directory.
 
-1. Build the configuration into a jar using './gradlew build'
-
-1. Copy `cf-gemfire-spring-examples.jar` present under `build/libs` to `cluster/lib`.
-
-1. Create a zip file with the command `zip -r config.zip cluster/`
-
+1. Build the configuration using 'buildClusterConfig' task.
+```
+   ./gradlew clean buildClusterConfig
+```
 1. Restart GemFire service instance using the following `cf` command: `cf restart-gemfire <service name> --config=config.zip --spring-xml=cache-context.xml`
