@@ -1,0 +1,19 @@
+group 'io.pivotal'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+    maven {
+        url "http://dist.gemstone.com/maven/release"
+    }
+}
+
+dependencies {
+    compile "org.springframework:spring-context-support:$springVersion"
+    compile "org.springframework.data:spring-data-gemfire:$sdgVersion"
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
