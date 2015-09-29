@@ -24,4 +24,7 @@ the `cluster/lib` directory.
 ```
    ./gradlew clean buildClusterConfig
 ```
+
+    You can find the cluster configuration 'config.zip' under 'build/distributions'.
+
 1. Restart GemFire service instance using the following `cf` command: `cf restart-gemfire <service name> --config=config.zip --spring-xml=cache-context.xml`
