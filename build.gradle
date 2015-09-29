@@ -15,5 +15,6 @@ repositories {
 dependencies {
     compile "org.springframework:spring-context-support:$springVersion"
     compile "org.springframework.data:spring-data-gemfire:$sdgVersion"
+    compile "org.springframework:spring-test:$springVersion"
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
