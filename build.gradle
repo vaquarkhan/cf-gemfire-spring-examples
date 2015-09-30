@@ -28,6 +28,7 @@ task('copyConfig', type: Copy, dependsOn: build) {
 task('buildClusterConfig', type: Zip, dependsOn: copyConfig) {
   inputs.file 'build/libs/cf-gemfire-spring-examples.jar'
   from 'cluster'
+  into 'cluster'
   archiveName 'config.zip'
 }
 
