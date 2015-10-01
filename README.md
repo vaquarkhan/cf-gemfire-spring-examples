@@ -6,7 +6,7 @@ This example demonstrates how to configure a GemFire service instance in Cloud F
 To accomplish this, you will need a Spring application context XML, which needs to be placed in an implementation jar, and applied to a GemFire service instance using `cf restart-gemire` command with `--spring-xml` and `--cluster-config` options of the GemFire CF CLI plugin, as in the following example:
 
 ```
-  cf restart-gemfire <service-instance-name> --config=config.zip --spring-xml=cache-context.xml
+  cf restart-gemfire <service instance> --config=config.zip --spring-xml=cache-context.xml
 ```
 
 Applying a new configuration to a cluster requires that the cluster be restarted. See [Using the GemFire for Cloud Foundry CLI Plug-in](http://docs.pivotal.io/gemfire-cf/gfe-cli.html) for more information on the GemFire CF CLI plugin.
@@ -54,7 +54,7 @@ Note that the Spring app context XML file, `cache-context.xml` is included in th
 1. Restart the GemFire service instance using the following command, where `--spring-xml` option takes the full path to the Spring app context XML in the containing jar: 
 
 	```
-	cf restart-gemfire <service instance name> --config=build/distributions/config.zip --spring-xml=cache-context.xml
+	cf restart-gemfire <service instance> --config=build/distributions/config.zip --spring-xml=cache-context.xml
 	```
 
 That's it. Your Spring configuration has been applied to the service instance.
