@@ -9,13 +9,13 @@ To accomplish this, you will need a Spring application context XML, which needs 
   cf restart-gemfire <service-instance-name> --config=config.zip --spring-xml=cache-context.xml
 ```
 
-Appling a new configuration to a cluster, requires that the cluster be restarted. See [GemFire-CLI](http://docs.pivotal.io/gemfire-cf/gfe-cli.html) for more information on the GemFire CF CLI plugin.
+Applying a new configuration to a cluster requires that the cluster be restarted. See [Using the GemFire for Cloud Foundry CLI Plug-in](http://docs.pivotal.io/gemfire-cf/gfe-cli.html) for more information on the GemFire CF CLI plugin.
  
 The cluster config zip format follows a specific convention that requires a top directory called `cluster` and a sub-directory called `lib` that should contain all the implementation and dependency jars, with a Spring app context XML included in an implementation jar. 
 
-A basic Spring app context XML is provided under 'src/main/resources' as cache-config.xml. This example also provides the directories `cluster/lib` as a template to use for creating a cluster config zip file. As this approach uses Spring Context, the spring-context jar is already included in this directory as a dependency.
+A basic Spring app context XML is provided in `src/main/resources/cache-config.xml`. This example also provides the directories `cluster/lib` as a template to use for creating a cluster config zip file. As this approach uses Spring Context, the spring-context jar is already included in this directory as a dependency.
 
-In order to build a new cluster config, follow these steps:
+In order to build a new cluster config, follow the following steps:
 
 1. Make sure the spring-context jar is included in the `cluster/lib` directory (already present).
 1. Build the configuration using `buildClusterConfig` task.
@@ -23,7 +23,7 @@ In order to build a new cluster config, follow these steps:
     ```
     ./gradlew clean buildClusterConfig
     ```
-    You can find the cluster configuration `config.zip` under `build/distributions`. It will have the following contents:
+    The end result of this step is a cluster configuration zip, `config.zip`, which you can find under `build/distributions`. It will have the following contents:
     
     ```
     $unzip -t build/distributions/config.zip 
